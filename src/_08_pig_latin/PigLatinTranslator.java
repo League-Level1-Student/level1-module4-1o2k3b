@@ -1,7 +1,50 @@
 package _08_pig_latin;
 
-public class PigLatinTranslator {
-    /**
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+
+public class PigLatinTranslator implements ActionListener {
+   // making the ui for the game
+	JFrame frame = new JFrame();
+	JPanel panel = new JPanel();
+	JButton eToPig = new JButton();
+	JButton pigToE = new JButton();
+	JTextField english = new JTextField();
+	JTextField pigLatin = new JTextField();
+	JLabel equals = new JLabel();
+
+	public void run() {
+		frame.add(panel);
+		panel.add(english);
+		panel.add(eToPig);
+		panel.add(pigToE);
+		panel.add(pigLatin);
+		panel.add(equals);
+
+		panel.setLayout(null);
+		frame.pack();
+		frame.setVisible(true);
+		frame.setSize(500, 150);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		english.setBounds(12, 25, 150, 50);
+		english.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		eToPig.setBounds(170, 37, 55, 25);
+		eToPig.setText("is>>");
+		eToPig.addActionListener(this);
+		pigLatin.setBounds(337, 25, 150, 50);
+		pigLatin.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		pigToE.setBounds(275, 37, 55, 25);
+		pigToE.setText("<<is");
+		pigToE.addActionListener(this);
+		equals.setBounds(243, 37, 25, 25);
+		equals.setFont(new Font("Times New Roman", Font.BOLD, 25));
+		equals.setText("=");
+	}
+	/**
      * Method to translate a english to pig latin.
      * 
      * @param s
@@ -120,4 +163,19 @@ public class PigLatinTranslator {
                 return i;
         return 0;
     }
+	public static void main(String[] args) {
+		PigLatinTranslator t = new PigLatinTranslator();
+		t.run();
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+if(e.getSource() == eToPig) {
+	pigLatin.setText(translateEnglishToPigLatin(english.getText()));
+}
+if(e.getSource() == pigToE) {
+	english.setText(translatePigLatinToEnglish(pigLatin.getText()));
+}
+		
+	}
 }
