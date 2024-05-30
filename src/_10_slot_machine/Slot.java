@@ -20,7 +20,7 @@ JLabel three = new JLabel();
 
 Random whichOne = new Random();
 int forRandom = 0;
-
+volatile boolean bool = false;
 Color background = new Color(30, 180, 90);
 Color red = new Color(175, 65, 40);
 
@@ -46,7 +46,7 @@ public void whichIcon(JLabel which) {
 		makeIcon("seven.jpeg", which);
 	}
 }
-public void run() {
+public void setup() throws InterruptedException {
 frame.add(panel);
 frame.setVisible(true);
 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -86,38 +86,53 @@ money.setBounds(50, 237, 50, 25);
 money.setOpaque(true);
 money.setText("$: " + coins);
 
+
 totalSpins.setBounds(300, 237, 50, 25);
 totalSpins.setOpaque(true);
 totalSpins.setText("spun: " + spins);
 
 frame.pack();
-//if(one.getIcon() == "")
-}
 
-public void spin() {
-	if(coins>=10) {
-		spins++;
-		coins-=10;
-		for(int many = 100; many<1000; many+=100) {
-		whichIcon(one);
-		whichIcon(two);
-		whichIcon(three); 
-		}
-	} else {
-		JOptionPane.showMessageDialog(null, "you lost your money you gambler, play again");
-	}
-	money.setText("$: " + coins);
-	totalSpins.setText("spun: " + spins);
+spin();
+
+
 }
+public void spin() throws InterruptedException {
+	if(bool == true) {
+		System.out.println("please");
+				spins++;
+			if(coins>=10) {
+				coins-=10;
+				for(int many = 50; many<500; many+=50) {
+				whichIcon(one);
+				whichIcon(two);
+				whichIcon(three); 
+				Thread.sleep(many);
+				}
+			
+			} else {
+				JOptionPane.showMessageDialog(null, "you lost your money you gambler, play again");
+			}
+			money.setText("$: " + coins);
+			totalSpins.setText("spun: " + spins);
+			bool = false;
+			System.out.println(bool);
+		}
+	}
 
 public static void main(String[] args) throws InterruptedException {
 	  Slot slot = new Slot();
-	  slot.run();
+	  slot.setup();
+	  while(true) {
+		  slot.spin();
+	  }
 }
+
 @Override
 public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
-		spin();
+		bool = true;
+		System.out.println(bool);
 }
 
 }
