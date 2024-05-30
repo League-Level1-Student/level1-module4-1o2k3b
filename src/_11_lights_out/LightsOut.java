@@ -109,7 +109,7 @@ public class LightsOut implements MouseListener {
 			label.setBackground(Color.LIGHT_GRAY);
 
 		} else {
-			label.setBackground(Color.WHITE);
+			label.setBackground(Color.white);
 		}
 	}
 
@@ -128,5 +128,18 @@ public class LightsOut implements MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+	}
+	int r = 1;
+	int y = 2;
+	public void check() {
+while(true) {
+	labels[1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20 & 21 & 22 & 23 & 24 & 25].getBackground();
+		if(labels[1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 14 & 15 & 16 & 17 & 18 & 19 & 20 & 21 & 22 & 23 & 24 & 25].getBackground() == Color.WHITE && labels[13].getBackground() == Color.LIGHT_GRAY) {
+	System.out.print("4");
+}
+if(labels[1].getBackground() == Color.white) {
+	System.out.println("6");
+}
+}
 	}
 }
