@@ -6,8 +6,6 @@ public class LightsOutRunner {
 				while(true) {
 					lightsout.LightsOut();
 					lightsout.check();
-
-
-		}
+}
 		}
 }

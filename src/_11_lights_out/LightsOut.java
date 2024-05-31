@@ -29,6 +29,8 @@ public class LightsOut implements MouseListener {
 	JPanel panel = new JPanel();
 	JLabel[] labels = new JLabel[25];
 
+	Color goodRed = new Color(150, 0, 0);
+
 	int i = 1;
 	int x = 0;
 
@@ -105,11 +107,11 @@ public class LightsOut implements MouseListener {
 	}
 
 	void toggle(JLabel label) {
-		if (label.getBackground() == Color.WHITE) {
+		if (label.getBackground() == goodRed) {
 			label.setBackground(Color.LIGHT_GRAY);
 
 		} else {
-			label.setBackground(Color.white);
+			label.setBackground(goodRed);
 		}
 	}
 
